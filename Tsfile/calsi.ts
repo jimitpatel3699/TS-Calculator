@@ -25,26 +25,26 @@ window.addEventListener('keydown', (e) => {
         keyvalues = e.key;
         display(keyvalues);
     }
-    if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/" || e.key === "%" || e.key === ".") {
+    if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/" || e.key == "%" || e.key == ".") {
         console.log(e.key);
         numvalues = e.key;
         operation(numvalues);
 
     }
-    if (e.key === "Enter") {
+    if (e.key == "Enter") {
         numvalues = '=';
         operation(numvalues);
     }
-    if (e.key === "Backspace") {
+    if (e.key == "Backspace") {
         clearscr("delete");
     }
-    if (e.key === "Escape") {
+    if (e.key == "Escape") {
         clearscr("clear");
     }
-    if (e.key === "(") {
+    if (e.key == "(") {
         bodmas("open-brace");
     }
-    if (e.key === ")") {
+    if (e.key == ")") {
         bodmas("close-brace");
     }
 });

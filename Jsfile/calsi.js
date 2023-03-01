@@ -71,7 +71,7 @@ function clearscr(id) {
 //for display data on answere box & status box
 function display(id) {
     let values;
-    if (keyvalues === undefined) {
+    if (keyvalues == undefined) {
         values = document.getElementById(id).innerText;
     }
     else {
@@ -189,6 +189,7 @@ function display(id) {
                 answerebox.value += values;
             }
     }
+    keyvalues = undefined;
 }
 //function for Arithmatics
 function operation(id) {
@@ -271,6 +272,7 @@ function operation(id) {
             }
         }
     }
+    numvalues = undefined;
 }
 //factorial function
 function factorial() {

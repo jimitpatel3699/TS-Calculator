@@ -77,9 +77,9 @@ function clearscr(id: string) {
 
 }
 //for display data on answere box & status box
-function display(id: string | any) {
-    let values: any;
-    if (keyvalues === undefined) {
+function display(id: string) {
+    let values: string;
+    if (keyvalues == undefined) {
         values = document.getElementById(id)!.innerText;
 
     }
@@ -236,13 +236,13 @@ function display(id: string | any) {
 
 
     }
-
+keyvalues=undefined;
 
 
 }
 //function for Arithmatics
 function operation(id: string) {
-    let sign
+    let sign:string
     textcounter = 1;
     if (afteror == 1) {
         showbox.value = "";
@@ -340,7 +340,7 @@ function operation(id: string) {
 
 
     }
-
+numvalues=undefined;
 }
 //factorial function
 function factorial() {

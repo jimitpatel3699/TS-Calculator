@@ -9,6 +9,7 @@ let plusmincount = 0; //for +/-
 let rcount = 0; //for bracket
 let lcount = 0; //for bracket
 let repeatcount = 0;
+let dotcounter = 0;
 let memory_array = []; //for mc,mr,m+,m-
 let keyvalues = undefined;
 let numvalues = undefined;
@@ -50,6 +51,7 @@ function clearscr(id) {
         answerebox.value = "";
         showbox.value = "";
         signcounter = 0; //for arithmatic type operations
+        dotcounter = 0;
     }
     if (id == "delete") {
         let data = answerebox.value;
@@ -60,12 +62,16 @@ function clearscr(id) {
         if (data[datalenght - 1] === ")") {
             lcount--;
         }
+        if (data[datalenght - 1] == ".") {
+            dotcounter = 0;
+        }
         answerebox.value = answerebox.value.slice(0, -1);
     }
     if (id == "clrans") {
         answerebox.value = "";
         rcount = 0;
         lcount = 0;
+        dotcounter = 0;
     }
 }
 //for display data on answere box & status box
@@ -179,14 +185,19 @@ function display(id) {
                 console.log("case 4");
                 break;
             }
-        case '.':
-            if (Number(answerebox.value) == 0) {
-                answerebox.value = "0" + values;
-                //showbox.value += values;
-                break;
-            }
-            else {
-                answerebox.value += values;
+        case ".":
+            {
+                if (Number(answerebox.value) == 0) {
+                    answerebox.value = "0" + values;
+                    //showbox.value += values;
+                }
+                else {
+                    if (dotcounter == 0) {
+                        answerebox.value += values;
+                        dotcounter = 1;
+                    }
+                    break;
+                }
             }
     }
     keyvalues = undefined;
@@ -273,6 +284,7 @@ function operation(id) {
         }
     }
     numvalues = undefined;
+    dotcounter = 0;
 }
 //factorial function
 function factorial() {

@@ -8,6 +8,7 @@ let plusmincount: number = 0;//for +/-
 let rcount: number = 0;//for bracket
 let lcount: number = 0;//for bracket
 let repeatcount: number = 0;
+let dotcounter:number=0;
 let memory_array: number[] = [];//for mc,mr,m+,m-
 let keyvalues: string | undefined = undefined;
 let numvalues: string | undefined = undefined;
@@ -53,17 +54,21 @@ function clearscr(id: string) {
         answerebox.value = "";
         showbox.value = "";
         signcounter = 0;//for arithmatic type operations
+        dotcounter=0;
 
     }
     if (id == "delete") {
-        let data = answerebox.value;
-        let datalenght = data.length;
+        let data:string = answerebox.value;
+        let datalenght:number = data.length;
         if (data[datalenght - 1] === "(") {
             rcount--;
         }
 
         if (data[datalenght - 1] === ")") {
             lcount--;
+        }
+        if (data[datalenght - 1] == ".") {
+            dotcounter=0;
         }
 
         answerebox.value = answerebox.value.slice(0, -1);
@@ -73,6 +78,7 @@ function clearscr(id: string) {
         answerebox.value = "";
         rcount = 0;
         lcount = 0;
+        dotcounter=0;
     }
 
 }
@@ -222,20 +228,25 @@ function display(id: string) {
 
                 break;
             }
-
-
-
-        case '.':
+         case "." :
+                {
             if (Number(answerebox.value) == 0) {
                 answerebox.value = "0" + values;
                 //showbox.value += values;
-                break;
+               
             } else {
-                answerebox.value += values;
+                if(dotcounter==0)
+                {
+                    answerebox.value += values;
+                   dotcounter=1;
+                }
+                
+                break;
             }
+        }
 
-
-    }
+        }
+    
 keyvalues=undefined;
 
 
@@ -337,10 +348,9 @@ function operation(id: string) {
             }
 
         }
-
-
     }
 numvalues=undefined;
+dotcounter=0;
 }
 //factorial function
 function factorial() {
